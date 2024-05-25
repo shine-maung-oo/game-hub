@@ -1,5 +1,5 @@
 import { HStack, Image } from "@chakra-ui/react";
-import logo from '../assets/logo.png'
+import logo from '../assets/naoki.png'
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
 import { FunctionComponent } from "react";
