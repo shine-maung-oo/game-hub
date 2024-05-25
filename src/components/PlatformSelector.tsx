@@ -5,30 +5,36 @@ import usePlatforms from "../hooks/usePlatforms";
 import { Platform } from "../types/PlatformTypes";
 
 interface Props {
-    onSelectPlatform: (playform: Platform) => void,
-    selectedPlatform: Platform | null
+  onSelectPlatform: (playform: Platform) => void;
+  selectedPlatform: Platform | null;
 }
- 
-const PlatFormSelector: FunctionComponent<Props> = ({
-    onSelectPlatform,
-    selectedPlatform
-}) => {
-    const {platforms, error} = usePlatforms()
 
-    return (  
-        <Menu>
-            <MenuButton as={Button} rightIcon={<BsChevronBarDown />}>
-                {selectedPlatform? selectedPlatform.name : "Platforms"}
-            </MenuButton>
-            <MenuList>
-                {
-                    platforms.map(platform => (
-                        <MenuItem onClick={() => {onSelectPlatform(platform)}} value={platform.id} key={platform.id}>{platform.name}</MenuItem>
-                    ))
-                }
-            </MenuList>
-        </Menu>
-    );
-}
- 
+const PlatFormSelector: FunctionComponent<Props> = ({
+  onSelectPlatform,
+  selectedPlatform,
+}) => {
+  const { platforms } = usePlatforms();
+
+  return (
+    <Menu>
+      <MenuButton as={Button} rightIcon={<BsChevronBarDown />}>
+        {selectedPlatform ? selectedPlatform.name : "Platforms"}
+      </MenuButton>
+      <MenuList>
+        {platforms.map((platform) => (
+          <MenuItem
+            onClick={() => {
+              onSelectPlatform(platform);
+            }}
+            value={platform.id}
+            key={platform.id}
+          >
+            {platform.name}
+          </MenuItem>
+        ))}
+      </MenuList>
+    </Menu>
+  );
+};
+
 export default PlatFormSelector;
